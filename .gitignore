@@ -7,3 +7,4 @@ testBundle.js
 coverage
 *.lock
 apidoc/des
+app/common/file

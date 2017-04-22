@@ -5,7 +5,7 @@ const fs = require('fs');
 const MailParser = require('../lib/mail-parser.js');
 
 let parser = new MailParser();
-let input = fs.createReadStream(__dirname + '/1489499647.Vfd00I804f0M734963.jobthai-mail01');
+let input = fs.createReadStream(__dirname + '/file/...');
 
 let attachments = [];
 
