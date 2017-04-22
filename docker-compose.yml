@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+### Workspace Utilities Container ###########################
+    nodejs:
+        image: node:latest
+        ports:
+            - "8080:8080"
+        volumes:
+            - .:/usr/src/app
+
+### Add more Containers below ###############################
+# use [ docker network create microservicenetwork ] เพื่อสร้าง mapmagiccloud(your network name้) network ขึ้นมาก่อน
+networks:
+    default:
+        external:
+            name: microservicenetwork

@@ -1,0 +1,12 @@
+{
+  "name": "Jobthai",
+  "version": "0.1.0",
+  "description": "",
+  "title": "Jobthai",
+  "url": "http://dev-position-service.jobthai.com/api",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}
+

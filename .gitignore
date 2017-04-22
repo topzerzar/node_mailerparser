@@ -1,0 +1,9 @@
+/logs/*
+node_modules
+data/*
+.env
+*.log
+testBundle.js
+coverage
+*.lock
+apidoc/des

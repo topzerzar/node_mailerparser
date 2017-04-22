@@ -1,0 +1,43 @@
+{
+  "name": "node mailer parser",
+  "version": "0.0.1",
+  "description": "Mail Parser",
+  "main": "server.js",
+  "scripts": {
+    "start": "./node_modules/.bin/gulp start"
+  },
+  "author": "weerapon",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "clone": "^1.0.2",
+    "co": "^4.6.0",
+    "co-express": "^1.2.1",
+    "compression": "^1.6.2",
+    "dotenv": "^2.0.0",
+    "entities": "^1.1.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "forever": "^0.15.2",
+    "helmet": "^2.1.1",
+    "json-api-ify": "^1.1.1",
+    "json-api-serializer": "^1.1.0",
+    "json-safe-parse": "0.0.2",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "multer": "^1.1.0",
+    "request": "^2.75.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-apidoc": "^0.2.5",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-shell": "^0.5.2",
+    "nodemon": "^1.10.2"
+  }
+}
