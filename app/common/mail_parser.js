@@ -3,15 +3,23 @@
 const util = require('util');
 const fs = require('fs');
 const MailParser = require('../lib/mail-parser.js');
+const nodemailer = require('nodemailer');
+
 
 let parser = new MailParser();
 let input = fs.createReadStream(__dirname + '/file/...');
 
 let attachments = [];
 
+let bodyMail = {
+  text: 'default text',
+  html: 'default html',
+};
+
 input.pipe(parser);
 
 parser.on('headers', headers => {
+    console.log('header : ------> ' , headers);
     console.log(util.inspect(headers, false, 22));
 });
 
@@ -19,8 +27,14 @@ parser.on('data', data => {
     if (data.type === 'text') {
         Object.keys(data).forEach(key => {
             console.log(key);
+            bodyMail.key = data[key];
             console.log('----');
             console.log(data[key]);
+            if(key === 'textAsHtml') {
+              bodyMail.html = data[key];
+            } else if (key === 'text') {
+              bodyMail.text = data[key];
+            }
         });
     }
 
@@ -62,6 +76,40 @@ parser.on('end', () => {
         }
         if (html) {
             console.log(html);
+            // create reusable transporter object using the default SMTP transport
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: '..',
+                    pass: '..'
+                }
+            });
+
+            // setup email data with unicode symbols
+            let mailOptions = {
+                from: '"Fred Foo 👻" <top.collection.it@gmail.com>', // sender address
+                to: 'panacholn@gmail.com,top.collection.it@gmail.com', // list of receivers
+                subject: 'Hello ✔', // Subject line
+                html: html // html body
+            };
+
+            // let message = {
+            //     envelope: {
+            //         from: '"Portfolio.tech" <top.collection.it@gmail.com>',
+            //         to: ['top.collection.it@gmail.com']
+            //     },
+            //     raw: {
+            //         path: './file/1489499647.Vfd00I804f0M734963.jobthai-mail01',
+            //     }
+            // };
+
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message %s sent: %s', info.messageId, info.response);
+            });
         }
     });
 });
